@@ -1,16 +1,18 @@
-import { View, Text, TextInput } from 'react-native'
-import { useState } from 'react'
-import React from 'react'
+import { View, TextInput } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
-export default function SearchBar() {
-  const [search, setSearch] = useState('')
+export default function SearchBar({ term, setTerm, onTermSubmit }) {
   return (
-    <View className='m-4'>
+    <View className='m-2 bg-gray-300 rounded-xl flex flex-row items-center px-4'>
+      <Ionicons name='ios-search-outline' size={24} color='black' />
       <TextInput
-        className='bg-gray-300 rounded-md px-4 py-1 w-full'
-        onChangeText={setSearch}
+        className='ml-2 h-10 text-lg w-full'
+        onChangeText={setTerm}
         placeholder='Search'
-        value={search}
+        value={term}
+        autoCapitalize='none'
+        autoCorrect={false}
+        onEndEditing={onTermSubmit}
       />
     </View>
   )
